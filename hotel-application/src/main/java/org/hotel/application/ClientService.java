@@ -11,8 +11,8 @@ public interface ClientService {
 
 	public List<Client> listClients();
 
-	public Client getClientByPesel(int pesel);
+	public Client getClientByEmail(String email);
 
-	public void removeClient(int pesel);
+	public void removeClient(String email);
 	
 }

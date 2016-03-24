@@ -30,6 +30,10 @@
 			<list>
 				<value>org.hotel.domain.Client</value>
 				<value>org.hotel.domain.Reservation</value>
+				<value>org.hotel.domain.Price</value>
+				<value>org.hotel.domain.Room</value>
+				<value>org.hotel.domain.Accommodation</value>
+				<value>org.hotel.domain.Damage</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -56,7 +60,35 @@
 	</bean>
 	<bean id="reservationService" class="org.hotel.application.impl.ReservationServiceImpl">
 		<property name="reservationDAO" ref="reservationDAO"></property>
-	</bean> 
+	</bean>
+	<bean id="priceDAO" class="org.hotel.application.impl.PriceDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/>
+	</bean>
+	<bean id="priceService" class="org.hotel.application.impl.PriceServiceImpl">
+		<property name="priceDAO" ref="priceDAO"></property>
+	</bean>
+	<bean id="roomDAO" class="org.hotel.application.impl.RoomDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/>
+	</bean>
+	<bean id="roomService" class="org.hotel.application.impl.RoomServiceImpl">
+		<property name="roomDAO" ref="roomDAO"></property>
+	</bean>
+ 	<bean id="accommodationDAO" class="org.hotel.application.impl.AccommodationDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/>
+	</bean>
+	<bean id="accommodationService" class="org.hotel.application.impl.AccommodationServiceImpl">
+		<property name="accommodationDAO" ref="accommodationDAO"></property>
+	</bean>
+	<bean id="damageDAO" class="org.hotel.application.impl.DamageDAOImpl">
+		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/>
+	</bean>
+	<bean id="damageService" class="org.hotel.application.impl.DamageServiceImpl">
+		<property name="damageDAO" ref="damageDAO"></property>
+	</bean>
 
 	<!-- <context:component-scan base-package="com.journaldev.spring" /> -->
 	<tx:annotation-driven transaction-manager="transactionManager" />

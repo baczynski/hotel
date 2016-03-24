@@ -12,16 +12,6 @@
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="org.blogstart" />
-	<!-- <mvc:resources mapping="/blogstart-webapp/resources/**" location="/blogstart-webapp/resources/" 
-		/> -->
- 	<mvc:resources mapping="/bootstrap/**" location="WEB-INF/bootstrap/" />
   	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
  
-	
-
-	
-	<!-- SpringMVC -->
-	<!-- <import resource="spring-mvc.xml" /> -->
-
-
 </beans>

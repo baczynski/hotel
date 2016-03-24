@@ -14,7 +14,7 @@
 	rel="stylesheet" />
 <link rel="icon"
 	href="${pageContext.request.contextPath}/resources/images/icon.jpg">
-<link href="<c:url value="/resources/css/styles.css" />"
+<link href="<c:url value="/resources/css/styles-glowna.css" />"
 	rel="stylesheet">
 
 <link href="<c:url value="/resources/css/font-awesome.min.css" />"
@@ -32,62 +32,43 @@
 </style>
 </head>
 <body>
-		<h1>Dane osobowe rezerwującego</h1>
-	<form method="POST" action="reservationForm.jsp" onsubmit="return confirm('Czy na pewno chcesz wysłać te dane?')"
-						onreset="return confirm('Czy na pewno chcesz wyczyścić wprowadzone dane?')">
-		<fieldset>
-			<legend></legend>
-			<input type="text" name="firstName" id="firstName" autofocus required onkeypress="namePressed(event)" />
-			<label for="firstName">
-				<abbr title="Pole wymagane">*</abbr>
-				Imię
-			</label> 
-			<br />
-			<input type="text" name="surname" id="surname" onblur="surnameBlur(this)" onfocus="surnameFocus(this)" />
-			<label for="surname">
-				<abbr title="Pole wymagane">*</abbr>
-				Nazwisko
-			</label>
-			<br />
-			<input type="text" name="streetAndNumber" id="streetAndNumber"  required/>
-			<label for="streetAndNumber">
-				<abbr title="Pole wymagane">*</abbr>
-				Ulica i nr domu
-			</label>
-			<br />
-			<input type="text" name="city" id="city"  required/>
-			<label for="city">
-				<abbr title="Pole wymagane">*</abbr>
-				Miejscowość
-			</label>
-			<br />
-			<input type="kod_pocztowy" pattern="^[0-9]{2}-[0-9]{3}$" required>
-			<label for="city">
-				<abbr title="Pole wymagane">*</abbr>
-				Kod pocztowy
-			</label>
-			<br />
-			<input type="email" name="email" id="email" autocomplete="off"  required/>
-			<label for="email">
-				<abbr title="Pole wymagane">*</abbr>
-				E-mail
-			</label>
-			<br />
-			<input type="tel" name="phoneNumber" id="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"  autocomplete="on" required />
-			<label for="phoneNumber">
-				<abbr title="Pole wymagane">*</abbr>
-				Numer telefonu (w formacie 123-456-789)
-			</label>
-			<br />
-			<input type="date" name="date" id="date"  required/>
-			<label for="date">
-				<abbr title="Pole wymagane">*</abbr>
-				Data urodzenia
-			</label>
-			<br />
-			<input type="reset" value="Anuluj" />
-			<input type="submit" value="Wyślij" />
-		</fieldset>
-	</form>
+		<header>
+		<h1>Witaj na stronie hotelu!</h1>
+	</header>
+	<section id="navigationSection">
+		<header>
+			<h4>Przejdź do</h4>
+		</header>
+		<nav>
+			<a name="rezerwuj" href="reservation_form" style="font-size: 26px">Rezerwuj </a>
+			<br>
+			<a name="kwateruj" href="reservations" style="font-size: 26px">Kwateruj </a>
+		</nav>
+		<p></p>
+	</section>
+	<section id="articleSection">
+		<header>
+			<h3>O nas</h3>
+		</header>
+		<article>
+		<header>
+			<h5>HOTEL XXI WIEKU</h5>
+		</header>
+			<p class="article" id="article">
+			Jesteśmy firmą świadczącą usługi hotelowe od 140 lat. Możemy pochwalić się zadowoleniem z pobytu co najmniej 98% naszych klientów.
+			Dbamy, aby ciągle poprawiać jakość świadczonych przez nas usług.
+			Sprawdź naszą ofertę a będziesz mógł się przekonać, że nasze ceny są niższe niż konkurencji. Organizujemy również imprezy okolicznościowe. Mają państwo możliwość wynajęcia całego hotelu.
+			</p>
+			<div id="cover">
+			<img src = "resources/images/hotel.jpg"  alt ="Zdjęcie hotelu">
+			</div>
+
+		</article>
+		<p></p>
+	</section>
+
+	<footer style="text-align: center;">
+		Hotel 2016 &copy;
+	</footer>
 </body>
 </html>

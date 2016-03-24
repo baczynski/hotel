@@ -22,8 +22,8 @@ public class ReservationServiceImpl implements ReservationService {
 
 	@Override
 	public List<Reservation> listReservations() {
-		reservationDAO.listReservations();
-		return null;
+		return reservationDAO.listReservations();
+		
 	}
 
 	@Override

@@ -11,8 +11,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.hotel.application.ClientDAO;
 import org.hotel.domain.Client;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ClientDAOImpl implements ClientDAO {
@@ -52,17 +50,33 @@ public class ClientDAOImpl implements ClientDAO {
 
 	@Transactional
 	@Override
-	public Client getClientByPesel(int pesel) {
+	public Client getClientByEmail(String email) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Client c = (Client) session.load(Client.class, new Integer(pesel));
+		Client c=null;
+		try {
+			Criteria criteria = session.createCriteria(Client.class);
+			criteria.add(Restrictions.eq("email", email));
+			c = (Client) criteria.uniqueResult();
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
 		return c;
 	}
 
 	@Transactional
 	@Override
-	public void removeClient(int id) {
+	public void removeClient(String email) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Client c = (Client) session.load(Client.class, new Integer(id));
+		Client c=null;
+		try {
+			Criteria criteria = session.createCriteria(Client.class);
+			criteria.add(Restrictions.eq("email", email));
+			c = (Client) criteria.uniqueResult();
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
 		if (null != c) {
 			session.delete(c);
 		}

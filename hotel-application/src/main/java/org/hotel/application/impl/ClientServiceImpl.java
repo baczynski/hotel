@@ -26,13 +26,13 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Client getClientByPesel(int pesel) {
-		return clientDAO.getClientByPesel(pesel);
+	public Client getClientByEmail(String email) {
+		return clientDAO.getClientByEmail(email);
 	}
 
 	@Override
-	public void removeClient(int pesel) {
-		clientDAO.removeClient(pesel);
+	public void removeClient(String email) {
+		clientDAO.removeClient(email);
 
 	}
 

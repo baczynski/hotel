@@ -2,6 +2,7 @@ package org.hotel.domain;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Address implements Serializable {
 	private String streetAndNumber;
 	private String city;

@@ -1,5 +1,6 @@
 package org.hotel.domain;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -9,28 +10,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Reservation")
-public class Reservation {
+public class Reservation implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private int id;
+	@Column(name = "reservationId")
+	private int reservationId;
 
 	@Column(name = "visitLength", nullable = false, unique = false)
 	private int visitLength;
-	@Column(name = "startVisitingDate", nullable = false, unique = false)
-	private Calendar startVisitingDate;
 	@Column(name = "fillFormDate", nullable = false, unique = false)
 	private Calendar fillFormDate;
+	@Column(name = "startVisitingDate", nullable = false, unique = false)
+	private Calendar startVisitingDate;
+	@Column(name = "peopleNumber", nullable = false, unique = false)
+	private int peopleNumber;
 	@Column(name = "roomSide", nullable = false, unique = false)
 	private String roomSide;
+	@Column(name="confirmed",nullable=false,unique=false)
+	private boolean confirmed;
 
 	@ManyToOne
-	@JoinColumn(name = "klient_pesel", nullable = false)
+	@JoinColumn(name = "clientid", nullable = false)
 	private Client client;
+
+	@OneToOne(mappedBy="reservation")
+	private Accommodation accommodation;
 
 	public int getVisitLength() {
 		return visitLength;
@@ -48,20 +58,20 @@ public class Reservation {
 		this.startVisitingDate = startVisitingDate;
 	}
 
-	public Calendar getFillFormDate() {
-		return fillFormDate;
+	public int getPeopleNumber() {
+		return peopleNumber;
 	}
 
-	public void setFillFormDate(Calendar fillFormDate) {
-		this.fillFormDate = fillFormDate;
+	public void setPeopleNumber(int peopleNumber) {
+		this.peopleNumber = peopleNumber;
 	}
 
-	public int getId() {
-		return id;
+	public int getReservationId() {
+		return reservationId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
 	}
 
 	public Client getClient() {
@@ -80,4 +90,28 @@ public class Reservation {
 		this.roomSide = roomSide;
 	}
 
+	public Calendar getFillFormDate() {
+		return fillFormDate;
+	}
+
+	public void setFillFormDate(Calendar fillFormDate) {
+		this.fillFormDate = fillFormDate;
+	}
+
+	public Accommodation getAccommodation() {
+		return accommodation;
+	}
+
+	public void setAccommodation(Accommodation accommodation) {
+		this.accommodation = accommodation;
+	}
+
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
+	}
+	
 }
